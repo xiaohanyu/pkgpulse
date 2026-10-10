@@ -1,0 +1,17 @@
+{
+  "name": "pkgticker",
+  "version": "1.0.1",
+  "private": true,
+  "description": "PkgTicker — per-day downloads table for GitHub & npm (Chrome extension)",
+  "license": "MIT",
+  "scripts": {
+    "lint": "biome check",
+    "lint:fix": "biome check --write --unsafe",
+    "icons": "node tools/make-icons.js",
+    "test": "node --test test/",
+    "dist": "rm -f pkgticker.zip && zip -rq -X pkgticker.zip manifest.json background.js inject.js icons -x '*.DS_Store' && unzip -Z1 pkgticker.zip | node tools/check-dist.js && unzip -l pkgticker.zip"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.9"
+  }
+}
